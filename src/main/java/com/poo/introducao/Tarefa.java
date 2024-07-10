@@ -13,7 +13,7 @@ public class Tarefa {
         this.executada = false;
     }
 
-    // Getters e Setters
+    
     public String getDescricao() {
         return descricao;
     }
