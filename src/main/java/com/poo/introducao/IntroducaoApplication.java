@@ -10,8 +10,10 @@ public class IntroducaoApplication {
 		SpringApplication.run(IntroducaoApplication.class, args);
 	    limpa();
 		
-		Menu menu = new Menu();
-	    menu.menu();
+		Sistema sistema = new Sistema();
+        Menu menuVisitante = new Menu(sistema);
+        menu.menu();
+        
 	}
 	static void limpa() {
         try {
