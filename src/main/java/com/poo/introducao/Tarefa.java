@@ -1,6 +1,7 @@
 package com.poo.introducao;
 
 import java.time.LocalDate;
+//
 
 public class Tarefa {
     private String descricao;
@@ -13,7 +14,7 @@ public class Tarefa {
         this.executada = false;
     }
 
-    // Getters e Setters
+    
     public String getDescricao() {
         return descricao;
     }

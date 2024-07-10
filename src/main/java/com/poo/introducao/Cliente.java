@@ -1,6 +1,6 @@
 package com.poo.introducao;
 
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties.Data;
+
 import java.time.LocalDate;
 
 public class Cliente {
