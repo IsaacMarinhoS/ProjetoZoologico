@@ -1,44 +1,37 @@
 package com.poo.introducao;
 
-
-import java.time.LocalDate;
-
 public class Cliente {
     private String nome;
     private String cpf;
-    private LocalDate dataDeNascimento;
+    private TipoCliente tipo;
 
-
-    public Cliente(String nome, String cpf, LocalDate dataDeNascimento) {
+    public Cliente(String nome, String cpf, TipoCliente tipo) {
+        if (!validarCPF(cpf)) {
+            throw new IllegalArgumentException("CPF inválido");
+        }
         this.nome = nome;
         this.cpf = cpf;
-        this.dataDeNascimento = dataDeNascimento;
+        this.tipo = tipo;
     }
 
-    
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public TipoCliente getTipo() {
+        return tipo;
     }
 
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
+    private boolean validarCPF(String cpf) {
+        // Adicione aqui a lógica de validação de CPF
+        return true; // Placeholder para validação de CPF
     }
+}
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-    
-
+enum TipoCliente {
+    DEFICIENTE, IDOSO, ESTUDANTE, NORMAL
 }

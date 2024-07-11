@@ -1,45 +1,33 @@
 package com.poo.introducao;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Ingresso {
-    private String tipo;
-    private Visitante visitante;
-    private Date data;
-    private double valor;
+    private Cliente cliente;
+    private TipoIngresso tipo;
+    private LocalDateTime horario;
 
-    public Ingresso(String tipo, Visitante visitante) {
+    public Ingresso(Cliente cliente, TipoIngresso tipo) {
+        this.cliente = cliente;
         this.tipo = tipo;
-        this.visitante = visitante;
-        this.data = new Date();
+        this.horario = LocalDateTime.now();
     }
 
-    
-    public String getTipo() {
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public TipoIngresso getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Visitante getVisitante() {
-        return visitante;
-    }
-
-    public void setVisitante(Visitante visitante) {
-        this.visitante = visitante;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
+    public LocalDateTime getHorario() {
+        return horario;
     }
 }
-    
 
+enum TipoIngresso {
+    INTEIRA, MEIA
+}
 
 
 
