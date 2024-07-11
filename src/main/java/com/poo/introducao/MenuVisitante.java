@@ -90,5 +90,6 @@ public class MenuVisitante {
         
         sistema.avaliarAtracoes(atracaoFavorita, atracaoMenosGostou);
         System.out.println("Avaliações das atrações registradas com sucesso.");
+
     }
 }

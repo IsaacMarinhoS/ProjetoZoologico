@@ -8,6 +8,10 @@ public class Gestor extends Funcionario {
         super(nome, cpf);
     }
 
+    public Gestor() {
+        //TODO Auto-generated constructor stub
+    }
+
     public void lancarTarefa(Tarefa tarefa) {
         System.out.println("Tarefa lançada: " + tarefa.getDescricao());
     }

@@ -1,9 +1,7 @@
 package com.poo.introducao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Sistema {
     private List<Funcionario> funcionarios;
@@ -23,7 +21,7 @@ public class Sistema {
         if ("cuidador".equalsIgnoreCase(tipo)) {
             funcionario = new Cuidador(nome, cpf);
         } else if ("gestor".equalsIgnoreCase(tipo)) {
-            funcionario = new Gestor(nome, cpf);
+            funcionario = new Gestor();
         }
         if (funcionario != null) {
             funcionarios.add(funcionario);
