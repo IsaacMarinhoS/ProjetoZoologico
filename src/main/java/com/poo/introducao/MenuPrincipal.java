@@ -15,18 +15,18 @@ public class MenuPrincipal {
     public void menuInterativo() {
         while (true) {
             System.out.println("\nMenu Principal:");
-            System.out.println("1. Menu de Administrador");
-            System.out.println("2. Menu de Visitante");
+            System.out.println("1. Menu de Visitante");
+            System.out.println("2. Menu de Administrador");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
             scanner.nextLine(); 
             switch (opcao) {
                 case 1:
-                    new Menu(sistema).menuInterativo();
+                    new MenuVisitante(sistema).menuInterativo();
                     break;
                 case 2:
-                    new MenuVisitante(sistema).menuInterativo();
+                    new MenuGestor(sistema).menuInterativo();
                     break;
                 case 0:
                     System.out.println("Saindo...");

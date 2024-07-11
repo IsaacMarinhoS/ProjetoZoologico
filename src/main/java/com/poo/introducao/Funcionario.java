@@ -1,6 +1,9 @@
 package com.poo.introducao;
 
+import java.util.List;
+
 public class Funcionario {
+
     protected String nome;
     protected String cpf;
     protected double salario;

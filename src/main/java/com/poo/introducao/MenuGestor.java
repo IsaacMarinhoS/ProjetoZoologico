@@ -1,7 +1,5 @@
 package com.poo.introducao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class MenuGestor {
@@ -33,7 +31,7 @@ public class MenuGestor {
             System.out.println("13. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); 
 
             switch (opcao) {
                 case 1:
@@ -88,7 +86,7 @@ public class MenuGestor {
     private void alterarFuncionario() {
         System.out.print("Digite o ID do funcionário a ser alterado: ");
         int id = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); 
         sistema.alterarFuncionario(id);
     }
 
@@ -105,7 +103,7 @@ public class MenuGestor {
     private void excluirFuncionario() {
         System.out.print("Digite o ID do funcionário a ser excluído: ");
         int id = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); 
         sistema.excluirFuncionario(id);
     }
 

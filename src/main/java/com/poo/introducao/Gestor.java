@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gestor extends Funcionario {
+    
     public Gestor(String nome, String cpf, double salario) {
         super(nome, cpf);
     }
-
-    public Gestor() {
-        //TODO Auto-generated constructor stub
+    public Gestor(String nome, String cpf){
+        super(nome, cpf);
     }
 
     public void lancarTarefa(Tarefa tarefa) {
