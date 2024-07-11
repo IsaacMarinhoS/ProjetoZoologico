@@ -11,8 +11,8 @@ public class IntroducaoApplication {
 	    limpa();
 		
 		Sistema sistema = new Sistema();
-        Menu menuVisitante = new Menu(sistema);
-        menu.menu();
+        MenuPrincipal menuPrincipal = new MenuPrincipal(sistema);
+        menuPrincipal.menuInterativo();
         
 	}
 	static void limpa() {

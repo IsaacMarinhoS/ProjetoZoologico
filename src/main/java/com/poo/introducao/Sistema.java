@@ -1,17 +1,21 @@
 package com.poo.introducao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Sistema {
     private List<Funcionario> funcionarios;
     private List<Visitante> visitantes;
     private List<Avaliacao> avaliacoes;
+    private List<Animal> animais;
 
     public Sistema() {
         this.funcionarios = new ArrayList<>();
         this.visitantes = new ArrayList<>();
         this.avaliacoes = new ArrayList<>();
+        this.animais = new ArrayList<>();
     }
 
     public Funcionario adicionarFuncionario(String nome, String cpf, String tipo) {
@@ -47,7 +51,7 @@ public class Sistema {
 
     public Animal adicionarAnimal(String nome, String especie, Cuidador cuidador) {
         Animal animal = new Animal(nome, especie, cuidador);
-        animal.add(animal);
+        animais.add(animal);
         return animal;
     }
 
@@ -55,7 +59,7 @@ public class Sistema {
         visitantes.add(visitante);
     }
 
-    public void comprarIngresso(String nomeVisitante, String cpfVisitante, int tipoIngresso) {
+    public void comprarIngresso(String nomeVisitante, String cpfVisitante, double inteira , double meiaEntrada) {
       
         Visitante visitante = new Visitante(nomeVisitante, cpfVisitante);
         visitantes.add(visitante);
@@ -78,16 +82,6 @@ public class Sistema {
         avaliacoes.add(novaAvaliacao);
         System.out.println("Avaliação do atendimento registrada: " + avaliacao);
     }
-
-    
-    public void avaliarAtracoes(String atracaoFavorita, String atracaoMenosGostou) {
-        
-        Avaliacao avaliacaoFavorita = new Avaliacao(); 
-        System.out.println(atracaoFavorita + "5");
-        Avaliacao avaliacaoMenosGostou = new Avaliacao(); 
-        System.out.println(atracaoMenosGostou + "1");
-        avaliacoes.add(avaliacaoFavorita);
-        avaliacoes.add(avaliacaoMenosGostou);
-        System.out.println("Avaliações das atrações registradas: " + atracaoFavorita + ", " + atracaoMenosGostou);
-    }
 }
+    
+    

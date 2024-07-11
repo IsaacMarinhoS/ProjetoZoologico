@@ -3,6 +3,7 @@ package com.poo.introducao;
 public class Funcionario {
     protected String nome;
     protected String cpf;
+    protected double salario;
 
     public Funcionario(String nome, String cpf) {
         this.nome = nome;

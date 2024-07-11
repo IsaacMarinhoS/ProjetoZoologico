@@ -55,16 +55,18 @@ public class MenuVisitante {
         }
       
         System.out.println("Selecione o tipo de ingresso:");
-        System.out.println("1. Inteira");
-        System.out.println("2. Meia-entrada");
-        System.out.print("Escolha uma opção: ");
-        int tipoIngresso = scanner.nextInt();
+        System.out.println("1. Inteira R$ 49,50");
+        System.out.println("2. Meia-entrada R$ 24,75");
+        System.out.println("Escolha uma opção: ");
+        double inteira = scanner.nextDouble();
+        double meiaEntrada = scanner.nextDouble();
         scanner.nextLine(); 
         
-      
-        sistema.comprarIngresso(nomeVisitante, cpfVisitante, tipoIngresso);
-        System.out.println("Ingresso comprado com sucesso.");
+        sistema.comprarIngresso (nomeVisitante, cpfVisitante, inteira, meiaEntrada);
+        System.out.println("Seu ingresso foi comprado com sucesso");
+     
     }
+    
 
     private void avaliarAtendimento() {
         System.out.println("\nOpção 2. Avaliar Atendimento selecionada.");

@@ -5,6 +5,7 @@ public class Ingresso {
     private String tipo;
     private Visitante visitante;
     private Date data;
+    private double valor;
 
     public Ingresso(String tipo, Visitante visitante) {
         this.tipo = tipo;

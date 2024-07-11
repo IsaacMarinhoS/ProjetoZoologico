@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gestor extends Funcionario {
-    public Gestor(String nome, String cpf) {
+    public Gestor(String nome, String cpf, double salario) {
         super(nome, cpf);
     }
 
@@ -18,5 +18,8 @@ public class Gestor extends Funcionario {
 
     public List<Tarefa> verificarTarefasAbertas() {
         return new ArrayList<>();
+    }
+    public void verAvaliacoes(List<Avaliacao> avaliacoes){
+        
     }
 }
