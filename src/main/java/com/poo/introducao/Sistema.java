@@ -110,9 +110,23 @@ public class Sistema {
     }
 
 
-    public void incluirFuncionario(String nome, String cpf, String tipo) {
-        adicionarFuncionario(nome, cpf, tipo);
+    public Funcionario incluirFuncionario(String nome, String cpf, String tipo) {
+        Funcionario funcionario = null;
+        if ("cuidador".equalsIgnoreCase(tipo)) {
+            funcionario = new Cuidador(nome, cpf);
+        } else if ("gestor".equalsIgnoreCase(tipo)) {
+            funcionario = new Gestor(nome, cpf);
+        } else if ("atendente".equalsIgnoreCase(tipo)) {
+            funcionario = new Atendente(nome, cpf);
+        }
+        if (funcionario != null) {
+            funcionarios.add(funcionario);
+        } else {
+            System.out.println("Tipo de funcionário inválido.");
+        }
+        return funcionario;
     }
+
 
     public void excluirFuncionario(int id) {
         if (id >= 0 && id < funcionarios.size()) {
@@ -175,6 +189,8 @@ public class Sistema {
     public void verFaturamentoParque() {
         
     }
+
+    
 
     public void avaliarAtracoes(String atracaoFavorita, String atracaoMenosGostou) {
         System.out.println("Avaliação da atração favorita: " + atracaoFavorita);

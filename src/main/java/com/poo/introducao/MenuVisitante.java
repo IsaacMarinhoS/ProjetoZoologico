@@ -1,85 +1,105 @@
 package com.poo.introducao;
 
 import java.util.Scanner;
+import java.util.Map;
+
+
+
 
 public class MenuVisitante {
-    private Sistema sistema;
-    private Scanner scanner;
+    private static GerenciamentoIngressos gerenciamento = new GerenciamentoIngressos();
 
-    public MenuVisitante(Sistema sistema) {
-        this.sistema = sistema;
-        this.scanner = new Scanner(System.in);
-    }
+    public static void menuInicial(){
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
 
-    public void menuInterativo() {
-        while (true) {
-            System.out.println("\nMenu de Visitante:");
-            System.out.println("1. Comprar Ingresso");
-            System.out.println("2. Avaliar Atendimento");
-            System.out.println("3. Avaliar Atração Favorita");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); 
+        do {
+            exibirMenu();
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
             switch (opcao) {
                 case 1:
-                    comprarIngresso();
+                    venderIngresso(scanner);
                     break;
                 case 2:
-                    avaliarAtendimento();
+                    exibirHorariosDeMaiorMovimento();
                     break;
                 case 3:
+                    avaliarAtendimento();
+                    break;
+                case 4:
                     avaliarAtracao();
                     break;
                 case 0:
-                    System.out.println("Saindo do Menu de Visitante...");
-                    return;
+                    System.out.println("Saindo do sistema...");
+                    break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-        }
+        } while (opcao != 0);
+
+        scanner.close();
     }
 
-    private void comprarIngresso() {
-        System.out.println("\nOpção 1. Comprar Ingresso selecionada.");
-        
-     
-        System.out.print("Digite seu nome: ");
-        String nomeVisitante = scanner.nextLine();
-        System.out.print("Digite seu CPF: ");
-        String cpfVisitante = scanner.nextLine();
-    
-        if (sistema.verificarCompraIngresso(cpfVisitante)) {
-            System.out.println("Você já comprou ingresso com este CPF.");
-            return;
-        }
-      
-        System.out.println("Selecione o tipo de ingresso:");
-        System.out.println("1. Inteira R$ 49,50");
-        System.out.println("2. Meia-entrada R$ 24,75");
-        System.out.println("Escolha uma opção: ");
-        double inteira = scanner.nextDouble();
-        double meiaEntrada = scanner.nextDouble();
-        scanner.nextLine(); 
-        
-        sistema.comprarIngresso (nomeVisitante, cpfVisitante, inteira, meiaEntrada);
-        System.out.println("Seu ingresso foi comprado com sucesso");
-     
+    private static void exibirMenu() {
+        System.out.println("===== Menu Principal =====");
+        System.out.println("1 - Vender Ingresso");
+        System.out.println("2 - Verificar Horários de Maior Movimento");
+        System.out.println("3.  Avaliar Atendimento");
+        System.out.println("4.  Avaliar Atração Favorita");
+        System.out.println("0 - Sair do Sistema");
+        System.out.print("Escolha uma opção: ");
     }
-    
 
-    private void avaliarAtendimento() {
+    private static void venderIngresso(Scanner scanner) {
+        System.out.print("Digite o nome do cliente: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Digite o CPF do cliente: ");
+        String cpf = scanner.nextLine();
+
+        System.out.print("Digite o tipo do cliente (1 - NORMAL, 2 - ESTUDANTE, 3 - IDOSO): ");
+        int tipoClienteInt = scanner.nextInt();
+        scanner.nextLine();
+        TipoCliente tipoCliente = TipoCliente.values()[tipoClienteInt - 1];
+
+        System.out.print("Digite o tipo de ingresso (1 - INTEIRA, 2 - MEIA): ");
+        int tipoIngressoInt = scanner.nextInt();
+        scanner.nextLine();
+        TipoIngresso tipoIngresso = TipoIngresso.values()[tipoIngressoInt - 1];
+
+        Cliente cliente = new Cliente(nome, cpf, tipoCliente);
+        gerenciamento.venderIngresso(cliente, tipoIngresso);
+        
+    }
+
+    private static void exibirHorariosDeMaiorMovimento() {
+        Map<Integer, Long> movimento = gerenciamento.horariosDeMaiorMovimento();
+        System.out.println("Horários de maior movimento: " + movimento);
+    }
+
+    protected static void avaliarAtendimento() {
+        Scanner scanner = new Scanner(System.in);
+        Sistema sistema = new Sistema();
+
+        
         System.out.println("\nOpção 2. Avaliar Atendimento selecionada.");
         
         System.out.print("Digite sua avaliação do atendimento (de 1 a 5): ");
         int avaliacaoAtendimento = scanner.nextInt();
         scanner.nextLine(); 
-        
         sistema.avaliarAtendimento(avaliacaoAtendimento);
         System.out.println("Avaliação do atendimento registrada com sucesso.");
+        scanner.close();
     }
 
-    private void avaliarAtracao() {
+    protected static void avaliarAtracao() {
+        Scanner scanner = new Scanner(System.in);
+        Sistema sistema = new Sistema();
+
+
+
         System.out.println("\nOpção 3. Avaliar Atração Favorita selecionada.");
         
        
@@ -90,6 +110,6 @@ public class MenuVisitante {
         
         sistema.avaliarAtracoes(atracaoFavorita, atracaoMenosGostou);
         System.out.println("Avaliações das atrações registradas com sucesso.");
-
+        scanner.close();
     }
 }

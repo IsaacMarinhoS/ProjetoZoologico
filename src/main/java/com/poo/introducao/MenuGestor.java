@@ -86,17 +86,19 @@ public class MenuGestor {
     private void alterarFuncionario() {
         System.out.print("Digite o ID do funcionário a ser alterado: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         sistema.alterarFuncionario(id);
     }
 
+
     private void incluirFuncionario() {
-        System.out.print("Digite o nome do novo funcionário: ");
+        System.out.print("Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
-        System.out.print("Digite o CPF do novo funcionário: ");
+        System.out.print("Digite o CPF do funcionário: ");
         String cpf = scanner.nextLine();
-        System.out.print("Digite o tipo do funcionário (Atendente, Gestor, Cuidador): ");
+        System.out.print("Digite o tipo do funcionário (cuidador, atendente, gestor): ");
         String tipo = scanner.nextLine();
+
         sistema.incluirFuncionario(nome, cpf, tipo);
     }
 

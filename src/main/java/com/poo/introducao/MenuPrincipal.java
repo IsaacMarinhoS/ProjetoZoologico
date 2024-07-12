@@ -23,7 +23,7 @@ public class MenuPrincipal {
             scanner.nextLine(); 
             switch (opcao) {
                 case 1:
-                    new MenuVisitante(sistema).menuInterativo();
+                     MenuVisitante.menuInicial();
                     break;
                 case 2:
                     new MenuGestor(sistema).menuInterativo();
