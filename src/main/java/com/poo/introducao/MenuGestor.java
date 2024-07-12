@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class MenuGestor {
 
+    public static void limpaConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     private Sistema sistema;
     private Scanner scanner;
 
@@ -15,66 +20,82 @@ public class MenuGestor {
     public void menuInterativo() {
         int opcao;
         do {
-            System.out.println("Menu Gestor");
-            System.out.println("1. Visualizar Funcionários");
-            System.out.println("2. Alterar Funcionário");
-            System.out.println("3. Incluir Funcionário");
-            System.out.println("4. Excluir Funcionário");
-            System.out.println("5. Visualizar Animais");
-            System.out.println("6. Alterar Animal");
-            System.out.println("7. Incluir Animal");
-            System.out.println("8. Excluir Animal");
-            System.out.println("9. Lançar Tarefas Diárias");
-            System.out.println("10. Verificar Tarefas Executadas");
-            System.out.println("11. Ver Avaliações dos Visitantes");
-            System.out.println("12. Ver Faturamento do Parque");
-            System.out.println("13. Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("            ______________________________________");
+            System.out.println("           |=========== MENU PRINCIPAL ===========|");
+            System.out.println("           |1. Visualizar Funcionários            |");
+            System.out.println("           |2. Alterar Funcionário                |");
+            System.out.println("           |3. Incluir Funcionário                |");
+            System.out.println("           |4. Excluir Funcionário                |");
+            System.out.println("           |5. Visualizar Animais                 |");
+            System.out.println("           |6. Alterar Animal                     |");
+            System.out.println("           |7. Incluir Animal                     |");
+            System.out.println("           |8. Excluir Animal                     |");
+            System.out.println("           |9. Lançar Tarefas Diárias             |");
+            System.out.println("           |10. Verificar Tarefas Executadas      |");
+            System.out.println("           |11. Ver Avaliações dos Visitantes     |");
+            System.out.println("           |12. Ver Faturamento do Parque         |");
+            System.out.println("           |13. Sair                              |");
+            System.out.println("           |______________________________________|");
+            System.out.print("           Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
                     visualizarFuncionarios();
+
                     break;
                 case 2:
                     alterarFuncionario();
+                    limpaConsole();
                     break;
                 case 3:
                     incluirFuncionario();
+                    limpaConsole();
                     break;
                 case 4:
                     excluirFuncionario();
+                    limpaConsole();
                     break;
                 case 5:
                     visualizarAnimais();
+                    limpaConsole();
                     break;
                 case 6:
                     alterarAnimal();
+                    limpaConsole();
                     break;
                 case 7:
                     incluirAnimal();
+                    limpaConsole();
                     break;
                 case 8:
                     excluirAnimal();
+                    limpaConsole();
                     break;
                 case 9:
                     lancarTarefasDiarias();
+                    limpaConsole();
                     break;
                 case 10:
                     verificarTarefasExecutadas();
+                    limpaConsole();
                     break;
                 case 11:
                     verAvaliacoesVisitantes();
+                    limpaConsole();
                     break;
                 case 12:
                     verFaturamentoParque();
+                    limpaConsole();
                     break;
                 case 13:
                     System.out.println("Saindo do menu gestor.");
+                    limpaConsole();
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
+                    limpaConsole();
             }
         } while (opcao != 13);
     }
@@ -90,7 +111,6 @@ public class MenuGestor {
         sistema.alterarFuncionario(id);
     }
 
-
     private void incluirFuncionario() {
         System.out.print("Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
@@ -105,7 +125,7 @@ public class MenuGestor {
     private void excluirFuncionario() {
         System.out.print("Digite o ID do funcionário a ser excluído: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         sistema.excluirFuncionario(id);
     }
 
@@ -116,7 +136,7 @@ public class MenuGestor {
     private void alterarAnimal() {
         System.out.print("Digite o ID do animal a ser alterado: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         sistema.alterarAnimal(id);
     }
 
@@ -131,7 +151,7 @@ public class MenuGestor {
     private void excluirAnimal() {
         System.out.print("Digite o ID do animal a ser excluído: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         sistema.excluirAnimal(id);
     }
 

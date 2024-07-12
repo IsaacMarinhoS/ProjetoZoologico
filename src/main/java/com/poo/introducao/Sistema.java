@@ -29,17 +29,17 @@ public class Sistema {
     }
 
     public Funcionario adicionarFuncionario(String nome, String cpf, String tipo) {
-    Funcionario funcionario = null;
-    if ("cuidador".equalsIgnoreCase(tipo)) {
-        funcionario = new Cuidador(nome, cpf);
-    } else if ("gestor".equalsIgnoreCase(tipo)) {
-        funcionario = new Gestor(nome, cpf);
+        Funcionario funcionario = null;
+        if ("cuidador".equalsIgnoreCase(tipo)) {
+            funcionario = new Cuidador(nome, cpf, tipo);
+        } else if ("gestor".equalsIgnoreCase(tipo)) {
+            funcionario = new Gestor(nome, cpf, tipo);
+        }
+        if (funcionario != null) {
+            funcionarios.add(funcionario);
+        }
+        return funcionario;
     }
-    if (funcionario != null) {
-        funcionarios.add(funcionario);
-    }
-    return funcionario;
-}
 
     public Cuidador buscarCuidadorPorCPF(String cpf) {
         for (Funcionario f : funcionarios) {
@@ -69,7 +69,7 @@ public class Sistema {
         visitantes.add(visitante);
     }
 
-    public void comprarIngresso(String nomeVisitante, String cpfVisitante, double inteira , double meiaEntrada) {
+    public void comprarIngresso(String nomeVisitante, String cpfVisitante, double inteira, double meiaEntrada) {
         Visitante visitante = new Visitante(nomeVisitante, cpfVisitante);
         visitantes.add(visitante);
         System.out.println("Ingresso comprado para " + nomeVisitante + " com CPF " + cpfVisitante);
@@ -95,7 +95,8 @@ public class Sistema {
             System.out.println("Nenhum funcionário cadastrado.");
         } else {
             for (Funcionario funcionario : funcionarios) {
-                System.out.println("Nome: " + funcionario.getNome() + ", CPF: " + funcionario.getCpf() + ", Tipo: " + funcionario.getClass().getSimpleName());
+                System.out.println("Nome: " + funcionario.getNome() + ", CPF: " + funcionario.getCpf() + ", Tipo: "
+                        + funcionario.getClass().getSimpleName());
             }
         }
     }
@@ -109,15 +110,14 @@ public class Sistema {
         }
     }
 
-
     public Funcionario incluirFuncionario(String nome, String cpf, String tipo) {
         Funcionario funcionario = null;
         if ("cuidador".equalsIgnoreCase(tipo)) {
-            funcionario = new Cuidador(nome, cpf);
+            funcionario = new Cuidador(nome, cpf, tipo);
         } else if ("gestor".equalsIgnoreCase(tipo)) {
-            funcionario = new Gestor(nome, cpf);
+            funcionario = new Gestor(nome, cpf, tipo);
         } else if ("atendente".equalsIgnoreCase(tipo)) {
-            funcionario = new Atendente(nome, cpf);
+            funcionario = new Atendente(nome, cpf, tipo);
         }
         if (funcionario != null) {
             funcionarios.add(funcionario);
@@ -126,7 +126,6 @@ public class Sistema {
         }
         return funcionario;
     }
-
 
     public void excluirFuncionario(int id) {
         if (id >= 0 && id < funcionarios.size()) {
@@ -142,7 +141,8 @@ public class Sistema {
             System.out.println("Nenhum animal cadastrado.");
         } else {
             for (Animal animal : animais) {
-                System.out.println("Nome: " + animal.getNome() + ", Espécie: " + animal.getEspecie() + ", Cuidador: " + animal.getCuidador().getNome());
+                System.out.println("Nome: " + animal.getNome() + ", Espécie: " + animal.getEspecie() + ", Cuidador: "
+                        + animal.getCuidador().getNome());
             }
         }
     }
@@ -158,7 +158,7 @@ public class Sistema {
     }
 
     public void incluirAnimal(String nome, String especie) {
-        
+
     }
 
     public void excluirAnimal(int id) {
@@ -169,7 +169,6 @@ public class Sistema {
             System.out.println("Animal não encontrado.");
         }
     }
-    
 
     public void lancarTarefaDiaria(String tarefa) {
         System.out.println("Tarefa diária lançada: " + tarefa);
@@ -177,7 +176,7 @@ public class Sistema {
 
     public void verificarTarefasExecutadas() {
         System.out.println("Verificando tarefas executadas.");
-        
+
     }
 
     public void verAvaliacoesVisitantes() {
@@ -187,19 +186,12 @@ public class Sistema {
     }
 
     public void verFaturamentoParque() {
-        
-    }
 
-    
+    }
 
     public void avaliarAtracoes(String atracaoFavorita, String atracaoMenosGostou) {
         System.out.println("Avaliação da atração favorita: " + atracaoFavorita);
         System.out.println("Avaliação da atração menos gostada: " + atracaoMenosGostou);
     }
 
-    
 }
-
-
-    
-    

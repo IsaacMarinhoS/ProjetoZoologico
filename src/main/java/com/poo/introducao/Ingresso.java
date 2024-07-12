@@ -1,4 +1,5 @@
 package com.poo.introducao;
+
 import java.time.LocalDateTime;
 
 public class Ingresso {
@@ -28,6 +29,3 @@ public class Ingresso {
 enum TipoIngresso {
     INTEIRA, MEIA
 }
-
-
-

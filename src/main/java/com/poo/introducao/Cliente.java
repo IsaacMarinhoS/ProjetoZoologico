@@ -25,5 +25,5 @@ public class Cliente {
 }
 
 enum TipoCliente {
-  IDOSO, ESTUDANTE, NORMAL
+    IDOSO, ESTUDANTE, NORMAL
 }
