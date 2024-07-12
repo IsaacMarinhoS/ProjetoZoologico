@@ -1,8 +1,8 @@
 package com.poo.introducao;
 
 public class Cuidador extends Funcionario {
-    public Cuidador(String nome, String cpf, String tipo) {
-        super(nome, cpf, tipo);
+    public Cuidador(String nome, String cpf) {
+        super(nome, cpf, "cuidador");
     }
 
     public void realizarTarefa(Tarefa tarefa) {

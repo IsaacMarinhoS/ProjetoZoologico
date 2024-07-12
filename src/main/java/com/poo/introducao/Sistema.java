@@ -31,9 +31,9 @@ public class Sistema {
     public Funcionario adicionarFuncionario(String nome, String cpf, String tipo) {
         Funcionario funcionario = null;
         if ("cuidador".equalsIgnoreCase(tipo)) {
-            funcionario = new Cuidador(nome, cpf, tipo);
+            funcionario = new Cuidador(nome, cpf);
         } else if ("gestor".equalsIgnoreCase(tipo)) {
-            funcionario = new Gestor(nome, cpf, tipo);
+            funcionario = new Gestor(nome, cpf);
         }
         if (funcionario != null) {
             funcionarios.add(funcionario);
@@ -105,6 +105,16 @@ public class Sistema {
         if (id >= 0 && id < funcionarios.size()) {
             Funcionario funcionario = funcionarios.get(id);
             System.out.println("Alterando funcionário: " + funcionario.getNome());
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Digite o novo nome para " + funcionario.getNome() + ": ");
+            String novoNome = scanner.nextLine();
+            funcionario.setNome(novoNome);
+            System.out.print("Digite o novo CPF para " + funcionario.getCpf() + ": ");
+            String novoCpf = scanner.nextLine();
+            funcionario.setCpf(novoCpf);
+            System.out.print("Digite o novo TIPO (Cuidador,Gestor,Atendente) para " + funcionario.getTipo() + ": ");
+            String novoTipo = scanner.nextLine();
+            funcionario.setTipo(novoTipo);
         } else {
             System.out.println("Funcionário não encontrado.");
         }
@@ -113,11 +123,11 @@ public class Sistema {
     public Funcionario incluirFuncionario(String nome, String cpf, String tipo) {
         Funcionario funcionario = null;
         if ("cuidador".equalsIgnoreCase(tipo)) {
-            funcionario = new Cuidador(nome, cpf, tipo);
+            funcionario = new Cuidador(nome, cpf);
         } else if ("gestor".equalsIgnoreCase(tipo)) {
-            funcionario = new Gestor(nome, cpf, tipo);
+            funcionario = new Gestor(nome, cpf);
         } else if ("atendente".equalsIgnoreCase(tipo)) {
-            funcionario = new Atendente(nome, cpf, tipo);
+            funcionario = new Atendente(nome, cpf);
         }
         if (funcionario != null) {
             funcionarios.add(funcionario);

@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Gestor extends Funcionario {
 
-    public Gestor(String nome, String cpf, String tipo) {
-        super(nome, cpf, tipo);
+    public Gestor(String nome, String cpf ) {
+        super(nome, cpf, "gestor");
     }
 
     public void lancarTarefa(Tarefa tarefa) {

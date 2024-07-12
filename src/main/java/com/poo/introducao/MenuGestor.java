@@ -87,7 +87,7 @@ public class MenuGestor {
                     break;
                 case 12:
                     verFaturamentoParque();
-                    limpaConsole();
+                    
                     break;
                 case 13:
                     System.out.println("Saindo do menu gestor.");
@@ -105,18 +105,20 @@ public class MenuGestor {
     }
 
     private void alterarFuncionario() {
-        System.out.print("Digite o ID do funcionário a ser alterado: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        sistema.alterarFuncionario(id);
-    }
+       
+            System.out.print("          Digite o ID do funcionário a ser alterado: ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            sistema.alterarFuncionario(id);
+        }
+    
 
     private void incluirFuncionario() {
-        System.out.print("Digite o nome do funcionário: ");
+        System.out.print("               Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
-        System.out.print("Digite o CPF do funcionário: ");
+        System.out.print("               Digite o CPF do funcionário: ");
         String cpf = scanner.nextLine();
-        System.out.print("Digite o tipo do funcionário (cuidador, atendente, gestor): ");
+        System.out.print("               Digite o tipo do funcionário (cuidador, atendente, gestor): ");
         String tipo = scanner.nextLine();
 
         sistema.incluirFuncionario(nome, cpf, tipo);

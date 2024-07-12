@@ -29,11 +29,9 @@ public class MenuVisitante {
                     break;
                 case 2:
                     exibirHorariosDeMaiorMovimento();
-
                     break;
                 case 3:
                     avaliarAtendimento();
-
                     break;
                 case 4:
                     avaliarAtracao();
@@ -84,7 +82,7 @@ public class MenuVisitante {
         System.out.print("          Digite a forma de pagamento (1 - PIX 2 - CARTÃO)");
         scanner.nextLine();
 
-        System.out.print("DIGITE:");
+        System.out.print("          DIGITE:");
         scanner.nextLine();
 
         Cliente cliente = new Cliente(nome, cpf, tipoCliente);
@@ -106,14 +104,11 @@ public class MenuVisitante {
         scanner.nextLine();
         sistema.avaliarAtendimento(avaliacaoAtendimento);
         System.out.println("Avaliação do atendimento registrada com sucesso.");
-        scanner.close();
     }
 
     protected static void avaliarAtracao() {
         Scanner scanner = new Scanner(System.in);
         Sistema sistema = new Sistema();
-
-        System.out.println("\nOpção 3. Avaliar Atração Favorita selecionada.");
 
         System.out.print("Digite o nome da atração que você mais gostou: ");
         String atracaoFavorita = scanner.nextLine();
@@ -122,6 +117,6 @@ public class MenuVisitante {
 
         sistema.avaliarAtracoes(atracaoFavorita, atracaoMenosGostou);
         System.out.println("Avaliações das atrações registradas com sucesso.");
-        scanner.close();
+       
     }
 }
