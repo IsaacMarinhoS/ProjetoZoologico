@@ -59,7 +59,7 @@ public class MenuGestor {
                     break;
                 case 5:
                     visualizarAnimais();
-                    
+                    limpaConsole();
                     break;
                 case 6:
                     alterarAnimal();
@@ -125,7 +125,7 @@ public class MenuGestor {
     }
 
     private void excluirFuncionario() {
-        System.out.print("                Digite o ID do funcionário a ser excluído: ");
+        System.out.print("             Digite o ID do funcionário a ser excluído: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         sistema.excluirFuncionario(id);
@@ -136,22 +136,22 @@ public class MenuGestor {
     }
 
     private void alterarAnimal() {
-        System.out.print("               Digite o ID do animal a ser alterado: ");
+        System.out.print("           Digite o ID do animal a ser alterado: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         sistema.alterarAnimal(id);
     }
 
     private void incluirAnimal() {
-        System.out.print("                Digite o nome do animal: ");
+        System.out.print("           Digite o nome do animal: ");
         String nome = scanner.nextLine();
-        System.out.print("                Digite a espécie: ");
+        System.out.print("           Digite a espécie: ");
         String especie = scanner.nextLine();
         sistema.adicionarAnimal(nome,especie);
     }
 
     private void excluirAnimal() {
-        System.out.print("Digite o ID do animal a ser excluído: ");
+        System.out.print("           Digite o ID do animal a ser excluído: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         sistema.excluirAnimal(id);
