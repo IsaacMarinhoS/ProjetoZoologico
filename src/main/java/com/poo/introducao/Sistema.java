@@ -59,12 +59,6 @@ public class Sistema {
         return null;
     }
 
-    public void adicionarAnimal(String nome, String especie, Cuidador cuidador) {
-        Animal animal = new Animal(nome, especie, cuidador);
-        cuidadosDiarios.put(animal, new ArrayList<>());
-        animais.add(animal);
-    }
-
     public void adicionarVisitante(Visitante visitante) {
         visitantes.add(visitante);
     }
@@ -148,28 +142,38 @@ public class Sistema {
 
     public void visualizarAnimais() {
         if (animais.isEmpty()) {
-            System.out.println("Nenhum animal cadastrado.");
+            System.out.println("Não há animais cadastrados no zoológico.");
         } else {
+            System.out.println("Lista de Animais no Zoológico:");
             for (Animal animal : animais) {
-                System.out.println("Nome: " + animal.getNome() + ", Espécie: " + animal.getEspecie() + ", Cuidador: "
-                        + animal.getCuidador().getNome());
+                System.out.println(animal.getNome());
+                System.out.println(animal.getEspecie());
             }
         }
+    }
+
+    public void adicionarAnimal(String nome, String especie) {
+        Animal animal = new Animal(nome, especie);
+        cuidadosDiarios.put(animal, new ArrayList<>());
+        animais.add(animal);
     }
 
     public void alterarAnimal(int id) {
         if (id >= 0 && id < animais.size()) {
             Animal animal = animais.get(id);
             System.out.println("Alterando animal: " + animal.getNome());
-            // Implementar lógica de alteração
+            Scanner scanner = new Scanner(System.in);
+                System.out.print("Digite o novo nome para " + animal.getNome() + ": ");
+                String novoNome = scanner.nextLine();
+                animal.setNome(novoNome);
+                System.out.print("Digite a nova espécie para " + animal.getEspecie() + ": ");
+                String novoEspecie = scanner.nextLine();
+                animal.setEspecie(novoEspecie);
         } else {
             System.out.println("Animal não encontrado.");
         }
     }
-
-    public void incluirAnimal(String nome, String especie) {
-
-    }
+    
 
     public void excluirAnimal(int id) {
         if (id >= 0 && id < animais.size()) {

@@ -59,7 +59,7 @@ public class MenuGestor {
                     break;
                 case 5:
                     visualizarAnimais();
-                    limpaConsole();
+                    
                     break;
                 case 6:
                     alterarAnimal();
@@ -106,7 +106,7 @@ public class MenuGestor {
 
     private void alterarFuncionario() {
        
-            System.out.print("          Digite o ID do funcionário a ser alterado: ");
+            System.out.print("           Digite o ID do funcionário a ser alterado: ");
             int id = scanner.nextInt();
             scanner.nextLine();
             sistema.alterarFuncionario(id);
@@ -114,18 +114,18 @@ public class MenuGestor {
     
 
     private void incluirFuncionario() {
-        System.out.print("               Digite o nome do funcionário: ");
+        System.out.print("                Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
-        System.out.print("               Digite o CPF do funcionário: ");
+        System.out.print("                Digite o CPF do funcionário: ");
         String cpf = scanner.nextLine();
-        System.out.print("               Digite o tipo do funcionário (cuidador, atendente, gestor): ");
+        System.out.print("                Digite o tipo do funcionário (cuidador, atendente, gestor): ");
         String tipo = scanner.nextLine();
 
         sistema.incluirFuncionario(nome, cpf, tipo);
     }
 
     private void excluirFuncionario() {
-        System.out.print("Digite o ID do funcionário a ser excluído: ");
+        System.out.print("                Digite o ID do funcionário a ser excluído: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         sistema.excluirFuncionario(id);
@@ -136,18 +136,18 @@ public class MenuGestor {
     }
 
     private void alterarAnimal() {
-        System.out.print("Digite o ID do animal a ser alterado: ");
+        System.out.print("               Digite o ID do animal a ser alterado: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         sistema.alterarAnimal(id);
     }
 
     private void incluirAnimal() {
-        System.out.print("Digite o nome do novo animal: ");
+        System.out.print("                Digite o nome do animal: ");
         String nome = scanner.nextLine();
-        System.out.print("Digite a espécie do novo animal: ");
+        System.out.print("                Digite a espécie: ");
         String especie = scanner.nextLine();
-        sistema.incluirAnimal(nome, especie);
+        sistema.adicionarAnimal(nome,especie);
     }
 
     private void excluirAnimal() {
