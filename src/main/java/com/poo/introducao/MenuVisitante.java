@@ -50,6 +50,8 @@ public class MenuVisitante {
         scanner.close();
     }
 
+    
+
     private static void exibirMenu() {
         System.out.println("            ___________________________________________");
         System.out.println("           |============== MENU VISITANTE =============|");
@@ -63,31 +65,23 @@ public class MenuVisitante {
     }
 
     private static void venderIngresso(Scanner scanner) {
+
+        Sistema sistema = new Sistema();
+
         System.out.print("\n\n          Digite o nome do cliente: ");
         String nome = scanner.nextLine();
 
         System.out.print("          Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
 
-        System.out.print("          Digite o tipo do cliente   (1 - NORMAL, 2 - ESTUDANTE, 3 - IDOSO): ");
-        int tipoClienteInt = scanner.nextInt();
-        scanner.nextLine();
-        TipoCliente tipoCliente = TipoCliente.values()[tipoClienteInt - 1];
-
         System.out.print("          Digite o tipo de ingresso  (1 - INTEIRA, 2 - MEIA): ");
         int tipoIngressoInt = scanner.nextInt();
         scanner.nextLine();
-        TipoIngresso tipoIngresso = TipoIngresso.values()[tipoIngressoInt - 1];
+        boolean meiaEntrada = (tipoIngressoInt == 2);
 
-        System.out.print("          Digite a forma de pagamento (1 - PIX 2 - CARTÃO)");
-        scanner.nextLine();
+        sistema.comprarIngresso(nome, cpf, meiaEntrada);
 
-        System.out.print("          DIGITE:");
-        scanner.nextLine();
-
-        Cliente cliente = new Cliente(nome, cpf, tipoCliente);
-        gerenciamento.venderIngresso(cliente, tipoIngresso);
-
+        System.out.print("          Compra realizada com sucesso!\n");
     }
 
     private static void exibirHorariosDeMaiorMovimento() {
@@ -97,12 +91,11 @@ public class MenuVisitante {
 
     protected static void avaliarAtendimento() {
         Scanner scanner = new Scanner(System.in);
-        Sistema sistema = new Sistema();
 
         System.out.print("Digite sua avaliação do atendimento (de 1 a 5): ");
         int avaliacaoAtendimento = scanner.nextInt();
         scanner.nextLine();
-        sistema.avaliarAtendimento(avaliacaoAtendimento);
+        Avaliacao.getAvaliacoes().add(new Avaliacao("teste", "teste",avaliacaoAtendimento));
         System.out.println("Avaliação do atendimento registrada com sucesso.");
     }
 

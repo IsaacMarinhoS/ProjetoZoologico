@@ -9,6 +9,12 @@ import java.util.Scanner;
 
 public class Sistema {
 
+    private double faturamentoTotal;
+
+    private double precoInteira = 50.0;
+    private double precoMeiaEntrada = 25.0;
+
+
     private Scanner scanner;
 
     private List<Funcionario> funcionarios;
@@ -17,6 +23,7 @@ public class Sistema {
     private List<Animal> animais;
     private Map<String, List<LocalDateTime>> entradasPorHorario;
     private Map<Animal, List<String>> cuidadosDiarios;
+    private List<Tarefa> tarefasDiarias;
 
     public Sistema() {
         this.funcionarios = new ArrayList<>();
@@ -26,6 +33,8 @@ public class Sistema {
         this.entradasPorHorario = new HashMap<>();
         this.cuidadosDiarios = new HashMap<>();
         this.scanner = new Scanner(System.in);
+        this.tarefasDiarias = new ArrayList<>();
+        this.faturamentoTotal = 0.0;
     }
 
     public Funcionario adicionarFuncionario(String nome, String cpf, String tipo) {
@@ -63,10 +72,23 @@ public class Sistema {
         visitantes.add(visitante);
     }
 
-    public void comprarIngresso(String nomeVisitante, String cpfVisitante, double inteira, double meiaEntrada) {
-        Visitante visitante = new Visitante(nomeVisitante, cpfVisitante);
-        visitantes.add(visitante);
+    public void comprarIngresso(String nomeVisitante, String cpfVisitante, boolean meiaEntrada) {
+        double valorIngresso = calcularValorIngresso(meiaEntrada);
+        faturamentoTotal += valorIngresso;
         System.out.println("Ingresso comprado para " + nomeVisitante + " com CPF " + cpfVisitante);
+    }
+
+    private double calcularValorIngresso(boolean meiaEntrada) {
+        if (meiaEntrada) {
+            return 25.0; 
+        } else {
+            return 50.0; 
+        }
+    }
+
+    
+    public void verFaturamentoParque() {
+        System.out.println("O faturamento total do parque é: R$ " + faturamentoTotal);
     }
 
     public boolean verificarCompraIngresso(String cpf) {
@@ -79,7 +101,7 @@ public class Sistema {
     }
 
     public void avaliarAtendimento(int avaliacao) {
-        Avaliacao novaAvaliacao = new Avaliacao();
+        Avaliacao novaAvaliacao = new Avaliacao("teste","teste", avaliacao);
         avaliacoes.add(novaAvaliacao);
         System.out.println("Avaliação do atendimento registrada: " + avaliacao);
     }
@@ -163,17 +185,16 @@ public class Sistema {
             Animal animal = animais.get(id);
             System.out.println("Alterando animal: " + animal.getNome());
             Scanner scanner = new Scanner(System.in);
-                System.out.print("Digite o novo nome para " + animal.getNome() + ": ");
-                String novoNome = scanner.nextLine();
-                animal.setNome(novoNome);
-                System.out.print("Digite a nova espécie para " + animal.getEspecie() + ": ");
-                String novoEspecie = scanner.nextLine();
-                animal.setEspecie(novoEspecie);
+            System.out.print("Digite o novo nome para " + animal.getNome() + ": ");
+            String novoNome = scanner.nextLine();
+            animal.setNome(novoNome);
+            System.out.print("Digite a nova espécie para " + animal.getEspecie() + ": ");
+            String novoEspecie = scanner.nextLine();
+            animal.setEspecie(novoEspecie);
         } else {
             System.out.println("Animal não encontrado.");
         }
     }
-    
 
     public void excluirAnimal(int id) {
         if (id >= 0 && id < animais.size()) {
@@ -184,24 +205,48 @@ public class Sistema {
         }
     }
 
-    public void lancarTarefaDiaria(String tarefa) {
-        System.out.println("Tarefa diária lançada: " + tarefa);
+    public void lancarTarefaDiaria(String descricao, String cpfCuidador) {
+        Cuidador cuidador = buscarCuidadorPorCPF(cpfCuidador);
+        if (cuidador != null) {
+            Tarefa tarefa = new Tarefa(descricao, cuidador);
+            tarefasDiarias.add(tarefa);
+            System.out.println("Tarefa diária lançada com sucesso!");
+        } else {
+            System.out.println("Cuidador não encontrado.");
+        }
     }
 
     public void verificarTarefasExecutadas() {
+        if (tarefasDiarias.isEmpty()) {
+            System.out.println("Nenhuma tarefa executada.");
+
+        } else {
+            for (Tarefa tarefa : tarefasDiarias) {
+                System.out
+                        .println("Tarefa: " + tarefa.getDescricao() + ", Cuidador: " + tarefa.getCuidador().getNome());
+            }
+        }
         System.out.println("Verificando tarefas executadas.");
 
     }
 
     public void verAvaliacoesVisitantes() {
-        for (Avaliacao avaliacao : avaliacoes) {
-            System.out.println(avaliacao);
+        System.out.println(Avaliacao.getAvaliacoes().get(0).getCpf());
+        List<Avaliacao> avaliacoes = Avaliacao.getAvaliacoes();
+        avaliacoes.get(0).getCpf();
+        if (avaliacoes.isEmpty()) {
+            System.out.println("Nenhuma avaliação registrada.");
+
+        } else {
+            for (Avaliacao avaliacao : avaliacoes) {
+                System.out.println(
+                        "CPF: " + avaliacao.getCpf() + ", Categoria: " + avaliacao.getCategoria() + ", Avaliação: " + avaliacao.getNota());
+            }
         }
     }
 
-    public void verFaturamentoParque() {
 
-    }
+   
 
     public void avaliarAtracoes(String atracaoFavorita, String atracaoMenosGostou) {
         System.out.println("Avaliação da atração favorita: " + atracaoFavorita);

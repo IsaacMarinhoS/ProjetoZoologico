@@ -83,7 +83,7 @@ public class MenuGestor {
                     break;
                 case 11:
                     verAvaliacoesVisitantes();
-                    limpaConsole();
+                    
                     break;
                 case 12:
                     verFaturamentoParque();
@@ -158,9 +158,11 @@ public class MenuGestor {
     }
 
     private void lancarTarefasDiarias() {
-        System.out.print("Digite a tarefa diária: ");
-        String tarefa = scanner.nextLine();
-        sistema.lancarTarefaDiaria(tarefa);
+        System.out.print("Digite a descrição da tarefa diária: ");
+        String descricao = scanner.nextLine();
+        System.out.print("Digite o CPF do cuidador responsável: ");
+        String cpfCuidador = scanner.nextLine();
+        sistema.lancarTarefaDiaria(descricao, cpfCuidador);
     }
 
     private void verificarTarefasExecutadas() {
@@ -168,6 +170,7 @@ public class MenuGestor {
     }
 
     private void verAvaliacoesVisitantes() {
+        
         sistema.verAvaliacoesVisitantes();
     }
 
